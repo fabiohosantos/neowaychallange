@@ -1,10 +1,9 @@
 import pandas as pd 
-import insert 
 import json
-import utils
-import threadmanager
+from utils import utils 
+from controller import threadmanager 
 import datetime
-from configuration import Config
+from utils.configuration import Config
 
 
 def load_data(directory):

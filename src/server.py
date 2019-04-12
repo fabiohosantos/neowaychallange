@@ -1,8 +1,8 @@
 import os
 
-from webservice import app
-from database import Database
-from configuration import Config
+from service.webservice import app
+from database.database import Database
+from utils.configuration import Config
 
 
 if __name__ == '__main__':

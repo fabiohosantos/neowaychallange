@@ -1,14 +1,15 @@
+from src.utils import utils
+import os
 import unittest
-import utils
 
 class UtilsTest(unittest.TestCase):
 
     def setUp(self):
-        path = "data"
+        self.path = (os.path.dirname(__file__) + "\data")
 
     def test_list_files(self):
-        value = 6
-        self.assertEqual(value, 6)
+        value = utils.listfiles(self.path)
+        self.assertEqual(len(value), 2)
 
 if __name__ == '__main__':
-    unittest.main()       
+    unittest.main()      

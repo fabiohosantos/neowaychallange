@@ -1,4 +1,6 @@
+import os
 from configparser import SafeConfigParser
+
 
 class Config:
 
@@ -7,7 +9,8 @@ class Config:
     @staticmethod
     def initialise(**kwargs):
         Config.__parser_config = SafeConfigParser()
-        Config.__parser_config.read('project.config')
+        p = os.path.dirname(__file__)
+        Config.__parser_config.read(p + '\project.config')
 
     @staticmethod
     def get_value(key):

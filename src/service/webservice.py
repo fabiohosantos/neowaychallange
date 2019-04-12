@@ -5,8 +5,8 @@ from flask_peewee.utils import get_object_or_404, object_list
 from functools import wraps
 from flask import request, Response
 
-from utils import json_response
-from logic import load_data
+from utils.utils import json_response
+from controller.logic import load_data
 
 app = Flask(__name__)
 

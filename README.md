@@ -18,7 +18,7 @@ Obs1: A escrita no banco foi utilizando o execute do psycogp2, onde eu concatene
 
 Obs2: Não consegui testar o copy nativo do postgres, por falta de tempo. Basicamente eu iria parsear os arquivos de entrada e gerar um arquivo sql relacionado e executar a escrita direto com o comando copy, suspeito que os ganhos seriam maiores, mas poderiamos perder o track de erros de inserção.
 
-Para testar a solução, basta:
+Para rodar a solução, basta:
 
 ### Criar o esquema do banco:
  - Criar um banco de dados;
@@ -49,4 +49,10 @@ Importante: Inserir os dados de autorização, com Basic Auth. O jeito correto s
 ```
 username: admin
 password: thesecret
+```
+
+### Camada de testes
+Na pasta raiz do projeto executar:
+```
+python -m unittest discover
 ```
