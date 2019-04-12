@@ -1,8 +1,8 @@
 from multiprocessing.dummy import Pool as ThreadPool
 from threading import Thread
 from queue import Queue
-import insert
-from database import Database 
+from database import insert
+from database import database 
 #based on code by: https://www.metachris.com/2016/04/python-threadpool/
 
 

@@ -1,5 +1,5 @@
 import psycopg2
-from database import CursorFromConnectionPool
+from database.database import CursorFromConnectionPool
 
 def insert_batch(sql,data):
 	try:

@@ -1,4 +1,4 @@
-from database import CursorFromConnectionPool
+from database.database import CursorFromConnectionPool
 
 class Score:
     def __init__(self, pk, score):

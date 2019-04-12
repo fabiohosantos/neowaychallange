@@ -1,5 +1,4 @@
 import unittest
-import utils
 
 class UtilsTest(unittest.TestCase):
 
@@ -11,4 +10,4 @@ class UtilsTest(unittest.TestCase):
         self.assertEqual(value, 6)
 
 if __name__ == '__main__':
-    unittest.main()       
+    unittest.main()      
