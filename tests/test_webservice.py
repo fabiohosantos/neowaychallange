@@ -1,6 +1,7 @@
 import unittest
+import base64
 from flask import Flask
-from flask.ext.basicauth import BasicAuth
+from flask_basicauth import BasicAuth
 
 
 def setUp(self):
@@ -65,3 +66,6 @@ def test_check_credentials_with_incorrect_credentials(self):
         self.assertFalse(
             self.basic_auth.check_credentials('admin', 'mysecret')
         )
+
+if __name__ == '__main__':
+    unittest.main()       

@@ -15,12 +15,14 @@ A solução que eu desenvolvi consiste em:
 - Criei um pool de threads para inserção dos dados no postgres. 
 
 Obs1: A escrita no banco foi utilizando o execute do psycogp2, onde eu concatenei os valores ao invés de usar o executemany. Isso deu um bom ganho de performance de escrita.
+
 Obs2: Não consegui testar o copy nativo do postgres, por falta de tempo. Basicamente eu iria parsear os arquivos de entrada e gerar um arquivo sql relacionado e executar a escrita direto com o comando copy, suspeito que os ganhos seriam maiores, mas poderiamos perder o track de erros de inserção.
 
 Para testar a solução, basta:
 
 ### Criar o esquema do banco:
- - Executar o arquivo `schema_database.sql`
+ - Criar um banco de dados;
+ - Connectar no banco e executar o arquivo `schema_database.sql`
 
 ### Instalar os requisitos
 - Na pasta do projeto:

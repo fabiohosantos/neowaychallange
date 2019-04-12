@@ -1,4 +1,3 @@
-DROP SCHEMA neoway CASCADE;
 CREATE SCHEMA neoway;
 	
 CREATE TABLE neoway.scores

@@ -8,4 +8,7 @@ class UtilsTest(unittest.TestCase):
 
     def test_list_files(self):
         value = 6
-        self.assertEqual(value, 6.0, FAILURE)
+        self.assertEqual(value, 6)
+
+if __name__ == '__main__':
+    unittest.main()       
