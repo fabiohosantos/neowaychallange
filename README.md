@@ -1,59 +1,50 @@
-# python-postgres-user-registration
+# Desafio da NeoWay
 
-This repository is part of the course "The Complete Python/PostgreSQL Developer Course". If you're interested in learning about Python and PostgreSQL, check it out!
+O desafio é descrito no arquivo challenge.md, em geral consiste em desenvolver um serviço que faz ingestão de dados em uma base SQL.
+De cara, me pareceu algo interessante. Então segui pensando em uma solução.
 
-## Installing PostgreSQL
+Primeiramente preparei o ambiente, conforme o desafio sugere.
+- Postgres
+- Python3
+- Docker não foi possível no meu notebook pessoal, Windows sem hyperV não rolou.
 
-To install PostgreSQL easily I would recommend using the installers from EnterpriseDB. The download page is here: https://www.postgresql.org/download/.
+A solução que eu desenvolvi consiste em:
+- Um serviço web que recebe o diretório
+- Acessar os arquivos desse diretório
+- Para cada arquivo, executar a leitura em chunks. Utilizei pandas, que facilita bastante esse tipo de cenário. Me baseei no template exemplo descrito no challange.
+- Criei um pool de threads para inserção dos dados no postgres. 
 
-## Installing psycopg2
+Obs1: A escrita no banco foi utilizando o execute do psycogp2, onde eu concatenei os valores ao invés de usar o executemany. Isso deu um bom ganho de performance de escrita.
+Obs2: Não consegui testar o copy nativo do postgres, por falta de tempo. Basicamente eu iria parsear os arquivos de entrada e gerar um arquivo sql relacionado e executar a escrita direto com o comando copy, suspeito que os ganhos seriam maiores, mas poderiamos perder o track de erros de inserção.
 
-To install the psycopg2 library there are a few ways.
+Para testar a solução, basta:
 
-### On UNIX (Linux and Mac OS X)
+### Criar o esquema do banco:
+ - Executar o arquivo `schema_database.sql`
 
-If you installed PostgreSQL via the EnterpriseDB installer, execute the following commands in a Terminal:
-
+### Instalar os requisitos
+- Na pasta do projeto:
 ```
-export PATH=$PATH:/Library/PostgreSQL/9.5/bin
-```
-
-Remember to substitute 9.5 for your PostgreSQL version.
-
-```
-pip install --upgrade wheel
-pip install --upgrade setuptools
-pip install psycopg2
-```
-
-### On Windows
-
-On Windows, we first need the Git Bash. Download and install it from here: http://git-for-windows.github.io.
-
-Then, we need to make sure our PATH environment variable contains the appropriate paths.
-
-In your Control Panel, find the System and Security section, and then go into the System section. Here, find the "Advanced System Settings" link, and in there go to the "Advanced" tab. Click on the "Environment Variables" button.
-
-Then, on both the PATH (user variables) and Path (system variables) variables, make sure the following paths have entries:
-
-- `C:\Program Files\PostgreSQL\9.5\bin` (remember to substitute 9.5 for your PostgreSQL version)
-- `C:\Users\yourusername\AppData\Local\Programs\Python\Python35-32` (this may be different if you downloaded e.g. Python3.6)
-
-Then, download the psycopg2 installer for your Python version: http://www.stickpeople.com/projects/python/win-psycopg/. Make note of the name of the file you are downloading.
-
-Finally, open up the Git Bash program that we installed initially and execute the following commands:
-
-```
-cd ~/Downloads
-python -m easy_install <file_name_downloaded>.exe
+pip install requirements.txt
 ```
 
-## Running the program
+### Atualizar o arquivo de configurações
+```
+Arquivo project.config
+```
 
-During installation of PostgreSQL, you were prompted for a password.
+### Iniciar o projeto
+```
+python server.py
+```
 
-In the `app.py` file of this repository, make sure your password is present when running the application.
-
-Be careful with putting your passwords up on GitHub!
-
-Modifying the file will **not** publish your password, but if you create your own repository later on, make sure you do not put your passwords in the code. It is not safe.
+### Utilizando alguma ferramenta de Rest Client (eu utilizo o Postman) enviar o request para o serviço.
+Exemplo:
+```
+http://localhost:8080/upload?dir=G:\Fabio\workspace\neoway\\data
+```
+Importante: Inserir os dados de autorização, com Basic Auth. O jeito correto seria utilizando a base de dados e uma tabela de Usuário, por falta de tempo, deixei diretamente no código. Sim, com certeza, é um ponto de melhoria. 
+```
+username: admin
+password: thesecret
+```
