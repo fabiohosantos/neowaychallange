@@ -12,6 +12,7 @@ def load_data(directory):
 	nthreads = int(Config.get_value('threads'))
 	pool = threadmanager.ThreadPool(nthreads) #based on cpu number available
 	chunksize = int(Config.get_value('chunksize'))
+	print("Started Data Ingestion")
 	for file in utils.listfiles(directory):
 		print("Processing file: " + file)
 		print(datetime.datetime.now().time())

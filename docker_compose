@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+  web:
+    build: .
+    command: python src/server.py 0.0.0.0:8080
+    volumes:
+      - .:/challenge
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+
+

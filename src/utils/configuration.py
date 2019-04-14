@@ -10,7 +10,8 @@ class Config:
     def initialise(**kwargs):
         Config.__parser_config = SafeConfigParser()
         p = os.path.dirname(__file__)
-        Config.__parser_config.read(p + '\project.config')
+        file = os.path.join(p, 'project.config')
+        Config.__parser_config.read(file)
 
     @staticmethod
     def get_value(key):

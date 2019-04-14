@@ -27,8 +27,8 @@ def uploaddata():
 	if auth.username != 'admin' or auth.password != 'thesecret' :
 		abort(401)
 	directory = request.args.get('dir')
-	print("Loading data...")
 	load_data(directory)
+	#fluxo de callback pendente.
 	return json_response({
         'directory': directory,
         'status': 'OK'

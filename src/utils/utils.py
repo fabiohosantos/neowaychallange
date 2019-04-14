@@ -22,5 +22,7 @@ def listfiles(path):
 	for r, d, f in os.walk(path):
 		for file in f:
 			files.append(os.path.join(r, file))
-
+    if len(files) <= 0 :
+        print('Files not found')
+            
 	return files
