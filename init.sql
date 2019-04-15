@@ -1,4 +1,3 @@
-export PGUSER=postgres
 
 CREATE SCHEMA neoway;
 
