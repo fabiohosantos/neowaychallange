@@ -16,9 +16,9 @@ if __name__ == '__main__':
     passwd = Config.get_value('password')
     server = Config.get_value('host')
 
-    #Database.initialise(database='learning', user='postgres', password='Associacao2019*', host='localhost')
+    Database.initialise(database='learning', user='postgres', password='Associacao2019*', host='localhost')
 
-    Database.initialise(database=db, user=user,password=passwd, host=server)
+    #Database.initialise(database=db, user=user,password=passwd, host=server)
     
     app.run(host=host, port=port)
     

@@ -20,24 +20,25 @@ Obs2: Não consegui testar o copy nativo do postgres, por falta de tempo. Basica
 
 Para rodar a solução, basta:
 
+## Execução Sem Docker
 ### Criar o esquema do banco:
  - Criar um banco de dados;
- - Connectar no banco e executar o arquivo `schema_database.sql`
+ - Connectar no banco e executar o arquivo `init.sql`
 
 ### Instalar os requisitos
 - Na pasta do projeto:
 ```
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Atualizar o arquivo de configurações
 ```
-Arquivo project.config
+Arquivo src/utils/project.config
 ```
 
 ### Iniciar o projeto
 ```
-python server.py
+python src/server.py
 ```
 
 ### Utilizando alguma ferramenta de Rest Client (eu utilizo o Postman) enviar o request para o serviço.
@@ -50,6 +51,20 @@ Importante: Inserir os dados de autorização, com Basic Auth. O jeito correto s
 username: admin
 password: thesecret
 ```
+
+## Execução com Docker
+
+Na pasta do projeto, executar os comandos:
+```
+- docker-compose build
+- docker-compose up
+```
+
+O docker está simples.
+Criei um Dockerfile com python e adicionei as variáveis do postgres.
+No docker-compose, inseri a imagem do postgres como serviço.
+Em alguns casos não consegui executar os testes por problema de paths para ambientes Windows e Linux.
+
 
 ### Camada de testes
 Na pasta raiz do projeto executar:
