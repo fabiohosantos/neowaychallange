@@ -6,7 +6,6 @@ De cara, me pareceu algo interessante. Então segui pensando em uma solução.
 Primeiramente preparei o ambiente, conforme o desafio sugere.
 - Postgres
 - Python3
-- Docker não foi possível no meu notebook pessoal, Windows sem hyperV não rolou.
 
 A solução que eu desenvolvi consiste em:
 - Um serviço web que recebe o diretório
